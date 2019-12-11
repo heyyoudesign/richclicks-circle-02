@@ -40,5 +40,11 @@
     "mustache": "^2.3.0",
     "socket.io": "^2.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "grunt-compile-handlebars": "^2.0.2",
+    "grunt-contrib-handlebars": "^2.0.0",
+    "grunt-handlebars-layouts": "^0.3.0",
+    "handlebars": "^4.5.3"
+  }
 }

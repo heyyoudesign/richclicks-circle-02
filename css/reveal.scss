@@ -1766,3 +1766,20 @@ $notesWidthPercent: 25%;
 .zoomed .reveal .roll span:after {
 	visibility: hidden;
 }
+
+.keywords {
+	font-size: 2em;
+	span {
+		color: #F37021;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+}
+
+.brackets {
+	color: #F37021;
+	font-weight: bold;
+}
+.callingcode {
+	font-family: "Calling Code";
+}

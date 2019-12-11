@@ -4,11 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>RichClicks Circle #02</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<!-- <link rel="stylesheet" href="css/theme/black.css"> -->
+		<link rel="stylesheet" href="css/theme/night.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -21,16 +22,55 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<script>
+			// var data = {
+			// 	keywords: [ "contributo", "connessione", "serenità", "casa", "calore" ]
+			// }
+			// var keywords = [ "contributo", "connessione", "serenità", "casa", "calore" ];
+		</script>
+		<!-- <script>
+			// compile the template
+			var template = Handlebars.compile("Handlebars <b>{{keywords}}</b>");
+			// execute the compiled template and print the output to the console
+			// console.log(template({ doesWhat: "rocks!" }));
+			// var template = $('#forrst-profile-template').html();
+			// var compile = Handlebars.compile(template);
+			// var result = compile(data);
+			// $('.keywords').html(result);
+			console.log(template({ doesWhat:[ "contributo", "connessione", "serenità", "casa", "calore" ]}));
+			</script> -->
+			<!-- <script id="template" type="text/x-handlebars-template">
+				{{#each keywords}}
+				<section>
+					<span><</span>
+						{{this}}
+					<span>></span>
+				</section>
+				{{/each}}
+			</script> -->
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+			<div class="slides callingcode keywords" >
+					
+				<section data-transition="slide-in fade-out">
+					<span><</span>
+						the human side
+					<span>></span>
+				</section>
+				
+				<section data-transition="zoom">
+					<span><</span>
+						serenity
+					<span>></span>
+				</section>
+								
 			</div>
 		</div>
 
 		<script src="js/reveal.js"></script>
+		<script src="js/keywords.js"></script>
 
 		<script>
 			// More info about config & dependencies:
@@ -41,9 +81,43 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/anything/anything.js' },
 					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				anything: [ 
+					{
+					className: "keywords", 
+					
+					defaults: {min: 0, max: 9}, 
+					initialize: (function(container, options){ 
+						var quoteMarkup = '';
+						for (var i = 0; i < keywords.length; i++) {
+							quoteMarkup += '<section>' + '<span>< </span>' + keywords[i] + '<span> ></span>' + '</section>';
+						}
+						// document.getElementById('quotes').innerHTML = quoteMarkup;
+						// container.innerHTML = Math.trunc( options.min + Math.random()*(options.max-options.min + 1) ); 
+						container.innerHTML = quoteMarkup;
+						console.log(quoteMarkup);
+						}) 
+					}
 				]
 			});
 		</script>
+		<!-- <script>
+		window.onload = function() {
+		//Grab the inline template
+		var template = document.getElementById('template').innerHTML;
+
+		//Compile the template
+		var compiled_template = Handlebars.compile(template);
+
+		//Render the data into the template
+		var rendered = compiled_template({ keywords: [ "contributo", "connessione", "serenità", "casa", "calore" ] });
+
+		//Overwrite the contents of #target with the renderer HTML
+		document.getElementById('target').innerHTML = rendered;
+		}
+
+		</script> -->
 	</body>
 </html>

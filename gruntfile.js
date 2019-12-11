@@ -126,10 +126,18 @@ module.exports = grunt => {
 				dest: 'reveal-js-presentation.zip'
 			}
 		},
+		
+		handlebars: {
+			all: {
+				files: {
+					"home.html": ["index.hbs"]
+				}
+			}
+		},
 
 		watch: {
 			js: {
-				files: [ 'gruntfile.js', 'js/reveal.js' ],
+				files: [ 'gruntfile.js', 'js/reveal.js', 'js/keywords.js' ],
 				tasks: 'js'
 			},
 			theme: {
@@ -162,6 +170,9 @@ module.exports = grunt => {
 
 	});
 
+	// compile handlebars
+	grunt.loadNpmTasks("grunt-handlebars-layouts");
+
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
 
@@ -185,5 +196,6 @@ module.exports = grunt => {
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+
 
 };
